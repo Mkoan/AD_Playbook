@@ -22,8 +22,9 @@
         enabled: yes
 
     - name: Add user to group
-      microsoft.ad.group_membership:
+      microsoft.ad.group:
         identity: "{{ target_group }}"
         members:
-          - "{{ username }}"
+          add:
+            - "{{ username }}"
         state: present
