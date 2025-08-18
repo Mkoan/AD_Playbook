@@ -1,0 +1,29 @@
+---
+- name: Create AD user and add to group
+  hosts: all
+  gather_facts: no
+  vars:
+    domain_name: "mcahome.local"
+    user_ou: "OU=Users,DC=contoso,DC=local"
+    username: "kadirhan"
+    user_password: "Passw0rd!"   # Güvenli bir parola belirle
+    target_group: "TestGroup"
+  tasks:
+    - name: Create AD user
+      microsoft.ad.user:
+        identity: "{{ username }}"
+        firstname: "Kadirhan"
+        surname: "User"
+        sam_account_name: "{{ username }}"
+        user_principal_name: "{{ username }}@{{ domain_name }}"
+        path: "{{ user_ou }}"
+        password: "{{ user_password }}"
+        state: present
+        enabled: yes
+
+    - name: Add user to group
+      microsoft.ad.group_membership:
+        identity: "{{ target_group }}"
+        members:
+          - "{{ username }}"
+        state: present
