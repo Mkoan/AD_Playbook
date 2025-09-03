@@ -1,0 +1,16 @@
+---
+- name: Add user to AD group
+  hosts: all
+  gather_facts: no
+  vars:
+    domain_name: "mcahome.local"
+    username: "mkoan"
+    target_group: "RootUsers"
+  tasks:
+    - name: Add user to group
+      microsoft.ad.group:
+        identity: "{{ target_group }}"
+        members:
+          add:
+            - "{{ username }}"
+        state: present
