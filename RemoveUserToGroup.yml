@@ -1,5 +1,5 @@
 ---
-- name: Add user to AD group
+- name: Remove user to AD group
   hosts: all
   gather_facts: no
   vars:
@@ -13,7 +13,7 @@
         members:
           add:
             - "{{ username }}"
-        state: present
+        state: absent
 ##### These vars must be defined in template
 # ansible_connection: winrm
 # ansible_winrm_server_cert_validation: ignore
