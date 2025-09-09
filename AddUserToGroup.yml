@@ -3,7 +3,7 @@
   hosts: all
   gather_facts: no
   vars:
-    domain_name: "mcahome.local"
+    #domain_name: "mcahome.local"
     username: "mkoan"
     target_group: "RootUsers"
   tasks:
