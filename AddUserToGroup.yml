@@ -19,7 +19,7 @@
         state: present
         domain_server: "AD01.{{ domain_name }}"
         domain_username: "administrator@{{ domain_name }}" # Veya başka bir yetkili kullanıcı
-        domain_password: "{{ ad_admin_password }}"
+        domain_password: "{{ Support123 }}"
 ##### These vars must be defined in template
 # ansible_connection: winrm
 # ansible_winrm_server_cert_validation: ignore
